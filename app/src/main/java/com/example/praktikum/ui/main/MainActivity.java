@@ -1,5 +1,6 @@
 package com.example.praktikum.ui.main;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +15,8 @@ import com.example.praktikum.R;
 
 public class MainActivity extends AppCompatActivity {
     private EditText ET_1, ET_2, ET_3, ET_4;
-    private Button btn_1;
-    private String siswa, guru, nama, alamat;
+    private Button btn_1, btn_2;
+    private String SET_1, SET_2, SET_3, SET_4;
     AppDatabase appDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +27,34 @@ public class MainActivity extends AppCompatActivity {
         ET_3 = findViewById(R.id.et_nama_sekolah);
         ET_4 = findViewById(R.id.et_alamat_sekolah);
         btn_1 = findViewById(R.id.btn_submit);
+        btn_2 = findViewById(R.id.btn_lihat);
         appDatabase = AppDatabase.iniDb(getApplicationContext());
         btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input();
+                Intent x = new Intent(getApplicationContext(), Main2Activity.class);
+                startActivity(x);
+            }
+        });
+        btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent x = new Intent(getApplicationContext(), Main2Activity.class);
+                startActivity(x);
             }
         });
     }
     public void input(){
-        siswa = ET_1.getText().toString();
-        guru = ET_2.getText().toString();
-        nama = ET_3.getText().toString();
-        alamat = ET_4.getText().toString();
+        SET_1 = ET_1.getText().toString();
+        SET_2 = ET_2.getText().toString();
+        SET_3 = ET_3.getText().toString();
+        SET_4 = ET_4.getText().toString();
         final DataSekolah dataSekolah = new DataSekolah();
-        dataSekolah.setJml_siswa(siswa);
-        dataSekolah.setJml_guru(guru);
-        dataSekolah.setNama_sekolah(nama);
-        dataSekolah.setAlamat(alamat);
+        dataSekolah.setJml_siswa(SET_1);
+        dataSekolah.setJml_guru(SET_2);
+        dataSekolah.setNama_sekolah(SET_3);
+        dataSekolah.setAlamat(SET_4);
         new InsertData(appDatabase, dataSekolah).execute();
     }
     class InsertData extends AsyncTask<Void, Void, Long> {
@@ -64,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Long aLong) {
             super.onPostExecute(aLong);
             Toast.makeText(getApplicationContext(), "sukses", Toast.LENGTH_SHORT).show();
+
         }
 
     }

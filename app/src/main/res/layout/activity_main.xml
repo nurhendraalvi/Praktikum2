@@ -81,8 +81,14 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Submit" />
+            android:text="Submit"
+            android:layout_below="@id/tv_alamat"/>
+        <Button
+            android:id="@+id/btn_lihat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="lihat data"
+            android:layout_below="@+id/btn_submit"/>
 
     </RelativeLayout>
 
