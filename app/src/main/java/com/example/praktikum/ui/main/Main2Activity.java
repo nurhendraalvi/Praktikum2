@@ -29,7 +29,7 @@ public class Main2Activity extends AppCompatActivity implements MainContact.hapu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        presenter = new Presenter(th.is);
+        presenter = new Presenter(this);
         recyclerView = findViewById(R.id.rc_main);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         appDatabase = AppDatabase.iniDb(getApplicationContext());
