@@ -66,18 +66,18 @@ public class MainActivity extends AppCompatActivity {
             this.dataSekolah = dataSekolah;
         }
 
-        @Override
-        protected Long doInBackground(Void... voids) {
-            return database.dao().insertData(dataSekolah);
-        }
+    @Override
+    protected Long doInBackground(Void... voids) {
+        return database.dao().insertData(dataSekolah);
+    }
 
-        @Override
-        protected void onPostExecute(Long aLong) {
-            super.onPostExecute(aLong);
-            Toast.makeText(getApplicationContext(), "sukses", Toast.LENGTH_SHORT).show();
-
-        }
+    @Override
+    protected void onPostExecute(Long aLong) {
+        super.onPostExecute(aLong);
+        Toast.makeText(getApplicationContext(), "sukses", Toast.LENGTH_SHORT).show();
 
     }
+
+}
 
 }
